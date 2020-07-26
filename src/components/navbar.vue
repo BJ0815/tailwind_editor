@@ -3,11 +3,11 @@
     <div class="container p-8">
       <h1 class="lg:text-3xl">{{ title }}</h1>
       <nav class="mt-4">
-        <ul class="flex">
+        <ul class="flex flex-wrap">
           <li
             v-for="item in navigators"
             :key="item.text"
-            class="lg:w-1/5 lg:flex-none flex-1 pr-4"
+            class="lg:w-1/5 lg:flex-none flex-1 mr-4 mb-4"
           >
             <BaseButton
               :text="item.text"

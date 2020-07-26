@@ -17,7 +17,8 @@ export const GROUP = {
   COLORS,
   TYPOGRAPHY,
   HEIGHT: 'Height',
-  WIDTH: 'Width'
+  WIDTH: 'Width',
+  SPACING: 'Spacing'
 }
 
 export const IFRAME_SRC = '/preview.html'
