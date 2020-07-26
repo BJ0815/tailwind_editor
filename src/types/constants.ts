@@ -15,5 +15,9 @@ export const MUTATIONS_ACTIONS = {
 export const GROUP = {
   GENERAL,
   COLORS,
-  TYPOGRAPHY
+  TYPOGRAPHY,
+  HEIGHT: 'Height',
+  WIDTH: 'Width'
 }
+
+export const IFRAME_SRC = '/preview.html'

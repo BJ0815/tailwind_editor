@@ -8,9 +8,17 @@ export interface FormatType {
   label: string;
   id: string;
   value: string;
+  type: string;
 }
 
 export interface StateType {
   tailwindConfig: Record<string, Record<string, string>>;
   tabSelector: string;
+}
+
+export interface FormatParametersType {
+  src: Record<string, string>;
+  key: string;
+  map?: Map<string, string>;
+  prefix?: string;
 }

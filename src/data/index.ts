@@ -13,10 +13,6 @@ const genNavigation: NavigationFn<string> = value => ({
   emit: value
 })
 
-export const navigators: Navigation<string>[] = [
-  genNavigation(GROUP.GENERAL),
-  genNavigation(GROUP.COLORS),
-  genNavigation(GROUP.TYPOGRAPHY)
-]
+export const navigators: Navigation<string>[] = Object.keys(GROUP).map(key => genNavigation(key))
 
 export const tailwindConfig = defaultConfig as unknown as Record<string, Record<string, string>>

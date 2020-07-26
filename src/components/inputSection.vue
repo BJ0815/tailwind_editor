@@ -12,7 +12,7 @@
           :label="item.label"
           :id="item.id"
           :value="item.value"
-          :type="'text'"
+          :type="item.type"
           :placeholder="item.label"
           @input="$emit('input', [Object.keys(section)[0], item.id, $event.target.value])"
         />
