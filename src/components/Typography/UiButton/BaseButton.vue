@@ -1,13 +1,13 @@
-<template>
+<template functional>
   <div>
     <a
-      v-on="$listeners"
+      v-on="listeners"
       href="javascript:;"
+      :class="[data.staticClass, data.class]"
       class="block cursor-pointer btn"
-      :class="[btnColor]
-    ">
-      <span :class="[`text-${size}`, txtColor]">
-        {{ text }}
+    >
+      <span :class="[`text-${props.size}`, props.txtColor]">
+        {{ props.text }}
       </span>
     </a>
   </div>

@@ -14,6 +14,8 @@ export interface FormatType {
 export interface StateType {
   tailwindConfig: Record<string, Record<string, string>>;
   tabSelector: string;
+  isPopOpen: boolean;
+  popupSrc: Record<string, string>;
 }
 
 export interface FormatParametersType {

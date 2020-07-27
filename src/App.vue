@@ -1,12 +1,15 @@
 <template>
-  <div class="">
-    <!-- <div class="h-full flex-auto overflow-auto">
-    </div> -->
-      <router-view />
+  <div :class="$store.state.isPopOpen ? 'fixed inset-0' : 'relative'">
+    <router-view />
+    <PopupMenu />
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import PopupMenu from '@/components/popupModel.vue'
 export default {
+  components: {
+    PopupMenu
+  }
 }
 </script>

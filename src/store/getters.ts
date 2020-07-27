@@ -5,7 +5,7 @@ const tabMapping = new Map([
   [GROUP.COLORS.toLowerCase(), ['colors']],
   [
     GROUP.TYPOGRAPHY.toLowerCase(),
-    ['fontFamily', 'fontSize', 'fontWeight', 'letterSpacing', 'lineHeight']
+    ['fontSize', 'fontWeight', 'letterSpacing', 'lineHeight']
   ],
   [GROUP.HEIGHT.toLowerCase(), ['height']],
   [GROUP.WIDTH.toLowerCase(), ['width']],

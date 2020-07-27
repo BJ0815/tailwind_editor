@@ -2,11 +2,11 @@
   <div class="h-full pt-32">
     <Navbar :title="title" @set-sidebar="setSidebar" />
     <main class="flex">
-      <BaseSidebar class="w-full lg:w-1/3 xl:w-1/4">
-        <InputSection @input="onChange" :resource="tabResource" />
+      <BaseSidebar>
+        <InputSection :resource="tabResource" />
       </BaseSidebar>
 
-      <div class="hidden min-h-screen w-full lg:static lg:block lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5 ">
+      <div class="hidden min-h-screen w-full lg:static lg:block lg:max-h-full lg:overflow-visible lg:w-2/3 xl:w-3/4 ">
         <Preview></Preview>
       </div>
     </main>

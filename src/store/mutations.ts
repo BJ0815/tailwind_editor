@@ -24,5 +24,19 @@ export default {
     }
 
     setValueByNested(state.tailwindConfig[group], subKeys, newValue)
+  },
+  togglePopup (state: StateType, src: [string, Record<string, string>]) {
+    const [group, item] = src
+    const field = {
+      ...item,
+      ...{
+        group
+      }
+    }
+    state.isPopOpen = !state.isPopOpen
+    state.popupSrc = field
+  },
+  closePopup (state: StateType) {
+    state.isPopOpen = false
   }
 }

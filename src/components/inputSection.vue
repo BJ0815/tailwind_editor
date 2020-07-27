@@ -14,7 +14,8 @@
           :value="item.value"
           :type="item.type"
           :placeholder="item.label"
-          @input="$emit('input', [Object.keys(section)[0], item.id, $event.target.value])"
+          readonly
+          @click="item.type !== 'color' ? togglePopup([Object.keys(section)[0], item]) : null"
         />
       </BaseInputGroup>
     </template>
@@ -27,6 +28,17 @@ export default {
     resource: {
       type: Array,
       default: () => []
+    }
+  },
+  data () {
+    return {
+      isOpen: false,
+      field: {}
+    }
+  },
+  methods: {
+    togglePopup (field) {
+      this.$store.commit('togglePopup', field)
     }
   }
 }

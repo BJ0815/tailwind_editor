@@ -10,6 +10,7 @@
             class="lg:w-1/8 lg:flex-none flex-1 mr-4 mb-4"
           >
             <BaseButton
+              class="btn-blue"
               :text="item.text"
               @click="$emit('set-sidebar', item.emit)"
             />

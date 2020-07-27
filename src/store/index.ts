@@ -9,7 +9,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     tailwindConfig,
-    tabSelector: 'general'
+    tabSelector: 'general',
+    isPopOpen: false,
+    popupSrc: {}
   },
   getters,
   mutations,
