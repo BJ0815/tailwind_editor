@@ -1,5 +1,5 @@
 <template>
-  <header class="relative z-10 bg-gray-300 text-left shadow-md">
+  <header class="w-full h-32 flex items-center bg-gray-300 text-left shadow-md fixed top-0 inset-x-0 z-50">
     <div class="container p-8">
       <h1 class="lg:text-3xl">{{ title }}</h1>
       <nav class="mt-4">
@@ -7,7 +7,7 @@
           <li
             v-for="item in navigators"
             :key="item.text"
-            class="lg:w-1/5 lg:flex-none flex-1 mr-4 mb-4"
+            class="lg:w-1/8 lg:flex-none flex-1 mr-4 mb-4"
           >
             <BaseButton
               :text="item.text"

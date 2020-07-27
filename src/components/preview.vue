@@ -1,5 +1,5 @@
 <template>
-  <div id="preview">
+  <div id="preview" class="p-8">
     <SpacingSection :resource="tailwindConfig.spacing" />
     <WidthSection :resource="tailwindConfig.width" :useWidthPreview="useWidthPreview" />
     <FontSizeSection :resource="tailwindConfig.fontSize"/>

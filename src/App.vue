@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col h-screen overflow-hidden">
-    <div class="h-full flex-auto overflow-auto">
+  <div class="">
+    <!-- <div class="h-full flex-auto overflow-auto">
+    </div> -->
       <router-view />
-    </div>
   </div>
 </template>
 

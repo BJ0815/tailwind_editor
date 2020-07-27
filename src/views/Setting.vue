@@ -1,13 +1,12 @@
 <template>
-  <div class="wrap h-full">
+  <div class="h-full pt-32">
     <Navbar :title="title" @set-sidebar="setSidebar" />
-    <main class="flex h-full">
+    <main class="flex">
       <BaseSidebar class="w-full lg:w-1/3 xl:w-1/4">
         <InputSection @input="onChange" :resource="tabResource" />
       </BaseSidebar>
 
-      <div class="flex-1 lg:my-6 lg:px-6 mx-auto relative overflow-x-hidden overflow-y-auto mb-8">
-        <!-- <iframe ref="preview" frameborder="0" width="100%" height="100%" /> -->
+      <div class="hidden min-h-screen w-full lg:static lg:block lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5 ">
         <Preview></Preview>
       </div>
     </main>

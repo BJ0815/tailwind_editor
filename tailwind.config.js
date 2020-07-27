@@ -1,7 +1,14 @@
 module.exports = {
   purge: [],
   theme: {
-    extend: {}
+    extend: {
+      inset: {
+        32: '8rem'
+      },
+      height: {
+        '(screen-16)': 'calc(100vh - 8rem)'
+      }
+    }
   },
   variants: {},
   plugins: []

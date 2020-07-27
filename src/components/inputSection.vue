@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div class="p-6 overflow-y-auto text-base lg:h-(screen-16) lg:text-sm lg:py-8 lg:pl-6 lg:pr-8 ">
     <template v-for="section in resource" >
       <BaseInputGroup
         v-for="itemGroup in section"
@@ -18,7 +18,7 @@
         />
       </BaseInputGroup>
     </template>
-  </section>
+  </div>
 </template>
 
 <script>

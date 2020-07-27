@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="mb-6">
     <h5 class="text-xl">{{ title }}</h5>
     <hr class="my-4">
     <slot />
