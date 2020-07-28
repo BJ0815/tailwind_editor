@@ -66,7 +66,10 @@ export default {
     popupSrc () {
       const src = Object.assign({}, this.resource)
       const exp = validFormats(src.value, this.formatTypes)
-      if (!exp) return (this.setMenuSelected('none')) && src
+      if (!exp) {
+        this.setMenuSelected('none')
+        return src
+      }
 
       const [value, e] = exp
       this.setMenuSelected(e)
