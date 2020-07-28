@@ -1,9 +1,8 @@
 <template>
   <BaseSection title="Fluid Width" id="width">
     <template v-slot:scopeList>
-      <template v-for="item in useWidthPreview">
-        <template v-for="(row, rowIndex) in item">
-          <div class="flex mb-4" :key="row + rowIndex">
+        <template v-for="(row, rowIndex) in useWidthPreview">
+          <div class="flex mb-4" :key="rowIndex">
             <div
               v-for="(text, index) in row"
               :key="text + index"
@@ -19,7 +18,6 @@
             </div>
           </div>
         </template>
-      </template>
     </template>
   </BaseSection>
 </template>

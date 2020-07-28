@@ -7,7 +7,7 @@ const tabMapping = new Map([
     GROUP.TYPOGRAPHY.toLowerCase(),
     ['fontSize', 'fontWeight', 'letterSpacing', 'lineHeight']
   ],
-  [GROUP.HEIGHT.toLowerCase(), ['height']],
+  // [GROUP.HEIGHT.toLowerCase(), ['height']],
   [GROUP.WIDTH.toLowerCase(), ['width']],
   [GROUP.SPACING.toLowerCase(), ['spacing']]
 ])
@@ -29,23 +29,17 @@ const format = ({ src, map, prefix, key }: FormatParametersType) =>
     return [...accumulator, ...res]
   }, [] as FormatType[])
 
-function genArray (num: number) { return Array(num).fill(0).map((v, index) => ++index) }
-
-function twoSum (numArray: number[], targetSum: number) {
+function twoSumArr (targetSum: number) {
   const pairs = []
-  const waitForPair = []
   const format = (num: number, max: number) => `${num}/${max}`
 
-  for (const currNum of numArray) {
-    const counterPart = targetSum - currNum
-    waitForPair.push(currNum)
-    const counterPartIndex = waitForPair.indexOf(counterPart)
-    if (counterPartIndex !== -1) {
-      waitForPair.splice(counterPartIndex, 1)
-      pairs.push([format(currNum, targetSum), format(counterPart, targetSum)])
-    } else {
-      waitForPair.push(currNum)
-    }
+  let count = Math.floor(targetSum / 2)
+  let compare = targetSum - 1
+  while (count > 0) {
+    const counterPart = targetSum - compare
+    pairs.push([format(counterPart, targetSum), format(compare, targetSum)])
+    count--
+    compare--
   }
   return pairs
 }
@@ -65,10 +59,9 @@ const getters = {
   [GETTERS_ACTIONS.USE_WIDTH_PREVIEW]: () => {
     const x = [2, 3, 4, 5, 6, 12]
     return x.reduce((a, max) => {
-      const mapping = twoSum(genArray(max), max)
-      a.push(mapping)
-      return a
-    }, [] as string[][][])
+      const mapping = twoSumArr(max)
+      return mapping && [...a, ...mapping]
+    }, [] as string[][])
   },
   [GETTERS_ACTIONS.EXPORT_JSON]: (state: StateType) => {
     const config = state.tailwindConfig

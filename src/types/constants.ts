@@ -20,7 +20,7 @@ export const GROUP = {
   GENERAL,
   COLORS,
   TYPOGRAPHY,
-  HEIGHT: 'Height',
+  // HEIGHT: 'Height',
   WIDTH: 'Width',
   SPACING: 'Spacing'
 }
