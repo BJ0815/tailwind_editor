@@ -1,28 +1,31 @@
 <template>
-  <div class="h-full pt-32">
+  <div class="h-full pt-32 pb-16 lg:pb-0">
     <Navbar :title="title" @set-sidebar="setSidebar" />
-    <main class="flex">
+    <div class="flex">
       <BaseSidebar>
         <InputSection :resource="tabResource" />
       </BaseSidebar>
 
-      <div class="hidden min-h-screen w-full lg:static lg:block lg:max-h-full lg:overflow-visible lg:w-2/3 xl:w-3/4 ">
+      <main class="hidden min-h-screen w-full lg:static lg:block lg:max-h-full lg:overflow-visible lg:w-2/3 xl:w-3/4 ">
         <Preview></Preview>
-      </div>
-    </main>
+      </main>
+    </div>
+    <DownloadButton />
   </div>
 </template>
 
 <script>
 import InputSection from '@/components/inputSection.vue'
 import Preview from '@/components/preview'
+import DownloadButton from '@/components/downloadButton'
 import { mapState, mapGetters } from 'vuex'
 import { MUTATIONS_ACTIONS, GETTERS_ACTIONS } from '../types'
 
 export default {
   components: {
     InputSection,
-    Preview
+    Preview,
+    DownloadButton
   },
   data () {
     return {

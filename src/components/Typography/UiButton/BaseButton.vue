@@ -2,9 +2,10 @@
   <div>
     <a
       v-on="listeners"
-      href="javascript:;"
-      :class="[data.staticClass, data.class]"
+      v-bind="data.attrs"
+      :href="props.href"
       class="block cursor-pointer btn"
+      :class="[data.class, data.staticClass]"
     >
       <span :class="[`text-${props.size}`, props.txtColor]">
         {{ props.text }}
@@ -20,9 +21,9 @@ export default {
       type: String,
       default: () => 'text-gray-100'
     },
-    btnColor: {
+    href: {
       type: String,
-      default: () => 'btn-blue'
+      default: () => 'javascript:;'
     },
     size: {
       type: String,

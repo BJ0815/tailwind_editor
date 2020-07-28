@@ -1,4 +1,4 @@
-import { FormatType, FormatParametersType, StateType, GETTERS_ACTIONS, GROUP } from '../types'
+import { FormatType, FormatParametersType, StateType, GETTERS_ACTIONS, GROUP, ExportJsonType } from '../types'
 
 const tabMapping = new Map([
   [GROUP.GENERAL.toLowerCase(), ['screens', 'opacity']],
@@ -62,13 +62,23 @@ const getters = {
         format({ src: state.tailwindConfig[key], key })
     }))
   },
-  useWidthPreview: () => {
+  [GETTERS_ACTIONS.USE_WIDTH_PREVIEW]: () => {
     const x = [2, 3, 4, 5, 6, 12]
     return x.reduce((a, max) => {
       const mapping = twoSum(genArray(max), max)
       a.push(mapping)
       return a
     }, [] as string[][][])
+  },
+  [GETTERS_ACTIONS.EXPORT_JSON]: (state: StateType) => {
+    const config = state.tailwindConfig
+    const JSONStructure: ExportJsonType = {
+      theme: {}
+    }
+    JSONStructure.theme = config
+
+    const JSONData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(JSONStructure))
+    return JSONData
   }
 }
 

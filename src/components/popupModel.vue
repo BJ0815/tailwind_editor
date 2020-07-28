@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isPopOpen" class="fixed top-0 left-0 w-full h-full z-50">
+  <div class="fixed top-0 left-0 w-full h-full z-50">
     <div class="fixed inset-0 bg-gray-600 opacity-50"></div>
     <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <div class="w-full p-6 bg-gray-200 rounded-lg shadow-md">
@@ -7,6 +7,7 @@
         <hr class="my-4" />
         <div class="flex items-center">
           <input
+            ref="input"
             class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-l-lg py-2 px-4 block w-full appearance-none h-10 leading-normal"
             v-model="popupSrc.value"
             :id="popupSrc.id"
@@ -36,7 +37,7 @@
           <BaseButton
               text="取消"
               class="bg-gray-400 hover:bg-gray-600"
-              @click="closePopup"
+              @click="close"
             />
         </div>
       </div>
@@ -46,47 +47,39 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { MUTATIONS_ACTIONS } from '../types'
-
-const formats = ['vw', 'vh', 'px', 'em', 'rem', '%']
-const validFormats = src => {
-  // TODO: 驗證單位是否正確
-  // TODO: 拆分單位跟數值
-  const regex = target => {
-    return /([%|px|rem|em|vw|vh]+)$/gm.exec(target)
-  }
-  const res = regex(src)
-  if (!res) return false
-
-  return formats.includes(res[0]) && [src.replace(res[0], ''), res[0]]
-}
+import { validFormats } from '@/utils/shared'
 
 export default {
+  props: {
+    resource: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       menuSelected: 'none',
-      formatTypes: formats
+      formatTypes: ['vw', 'vh', 'px', 'em', 'rem', '%']
     }
   },
   computed: {
-    ...mapState({
-      isPopOpen: 'isPopOpen',
-      popupSrc (state) {
-        const src = Object.assign({}, state.popupSrc)
-        const exp = validFormats(src.value)
-        if (!exp) return (this.menuSelected = 'none') && src
+    popupSrc () {
+      const src = Object.assign({}, this.resource)
+      const exp = validFormats(src.value, this.formatTypes)
+      if (!exp) return (this.setMenuSelected('none')) && src
 
-        const [value, e] = exp
-        this.menuSelected = e
-        src.value = value
-        return src
-      }
-    }),
+      const [value, e] = exp
+      this.setMenuSelected(e)
+      src.value = value
+      return src
+    },
     newValue () {
       const type = this.menuSelected !== 'none' ? this.menuSelected : ''
       return this.popupSrc.value + type
     }
+  },
+  mounted () {
+    this.$refs.input && this.$refs.input.focus()
   },
   methods: {
     update () {
@@ -94,11 +87,13 @@ export default {
       const subKey = this.popupSrc.id
       const newValue = this.newValue
       const changeEvent = [group, subKey, newValue]
-      this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, changeEvent)
-      this.closePopup()
+      this.$emit('update', changeEvent)
     },
-    closePopup () {
-      this.$store.commit('closePopup')
+    setMenuSelected (value) {
+      this.menuSelected = value
+    },
+    close () {
+      this.$emit('onClose')
     }
   }
 }

@@ -1,13 +1,13 @@
 <template>
-  <main class="h-full">
+  <main class="h-screen">
     <div class="container mx-auto h-full flex justify-center items-center">
       <article class="w-full">
         <header>
           <h1 class="text-3xl my-8 mx-auto typing-demo">Customize your own TailwindCss configuration</h1>
-          <nav class="text-center">
-            <router-link :to="{path: 'setting'}" class="btn btn-blue">Get Started</router-link>
-          </nav>
         </header>
+        <nav class="text-center">
+          <router-link :to="{path: 'setting'}" class="btn btn-blue">Get Started</router-link>
+        </nav>
       </article>
     </div>
   </main>

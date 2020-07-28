@@ -24,3 +24,9 @@ export interface FormatParametersType {
   map?: Map<string, string>;
   prefix?: string;
 }
+
+export interface ExportJsonType {
+  theme: {
+    [x: string]: Record<string, string>;
+  };
+}
