@@ -17,6 +17,7 @@ import FontWeightSection from '@/components/Typography/UiPreviewSection/fontWeig
 import LetterSpacingSection from '@/components/Typography/UiPreviewSection/letterSpacing'
 import LineHeightSection from '@/components/Typography/UiPreviewSection/lineHeight'
 import { mapState, mapGetters } from 'vuex'
+import { GETTERS_ACTIONS } from '@/types'
 
 export default {
   components: {
@@ -29,7 +30,7 @@ export default {
   },
   computed: {
     ...mapState(['tailwindConfig']),
-    ...mapGetters(['useWidthPreview'])
+    ...mapGetters([GETTERS_ACTIONS.USE_WIDTH_PREVIEW])
   }
 }
 </script>

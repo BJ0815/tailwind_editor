@@ -1,7 +1,6 @@
 <template>
   <div
-    :class="$store.state.isPopOpen ? 'fixed inset-0' : 'relative'"
-    class="bg-main"
+    class="bg-main relative"
   >
     <router-view />
     <PopupMenu

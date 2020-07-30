@@ -1,10 +1,13 @@
 <template>
-  <div class="p-6 overflow-y-auto text-base lg:h-(screen-16) lg:text-sm lg:py-8 lg:pl-6 lg:pr-8 ">
-    <template v-for="section in resource" >
+  <div
+    class="p-6 overflow-y-auto text-base lg:h-(screen-16) lg:text-sm lg:py-8 lg:pl-6 lg:pr-8 "
+  >
+    <template v-for="section in resource">
       <BaseInputGroup
         v-for="(itemGroup, key) in section"
         :key="key"
         :title="key"
+        @onClick="togglePopup([key])"
       >
         <BaseInput
           v-for="item in itemGroup"
@@ -23,10 +26,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { MUTATIONS_ACTIONS } from '@/types'
 
-export default {
+export default Vue.extend({
   props: {
     resource: {
       type: Array,
@@ -40,12 +44,12 @@ export default {
     }
   },
   methods: {
-    togglePopup (field) {
-      this.$store.commit('togglePopup', field)
+    togglePopup (field: [string, Record<string, string>]) {
+      this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_POPUP, field)
     },
-    onChange (changeEvent) {
+    onChange (changeEvent: string[]) {
       this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, changeEvent)
     }
   }
-}
+})
 </script>
