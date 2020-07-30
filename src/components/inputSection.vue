@@ -7,7 +7,7 @@
         v-for="(itemGroup, key) in section"
         :key="key"
         :title="key"
-        @onClick="togglePopup([key])"
+        @onClick="togglePopup(key)"
       >
         <BaseInput
           v-for="item in itemGroup"
@@ -18,7 +18,7 @@
           :type="item.type"
           :placeholder="item.label"
           readonly
-          @click="item.type !== 'color' ? togglePopup([key, item]) : null"
+          @click="togglePopup(key, item)"
           @change="onChange([key, item.id, $event.target.value])"
         />
       </BaseInputGroup>
@@ -44,8 +44,10 @@ export default Vue.extend({
     }
   },
   methods: {
-    togglePopup (field: [string, Record<string, string>]) {
-      this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_POPUP, field)
+    togglePopup (key: string, field?: Record<string, string>) {
+      if (field && field.type === 'color') return
+
+      this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_POPUP, [key, field])
     },
     onChange (changeEvent: string[]) {
       this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, changeEvent)

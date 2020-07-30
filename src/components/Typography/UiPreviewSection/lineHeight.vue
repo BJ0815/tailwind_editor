@@ -1,12 +1,12 @@
 <template>
   <BaseSection title='Line Height' id="lineHeight">
     <template v-slot:scopeList>
-      <template v-for="key in Object.keys(resource)">
+      <template v-for="(value, key) in resource">
         <div class="mb-6" :key="key">
           <p class="text-sm text-gray-500">.leading-{{ key }}</p>
           <p
             class="break-words text-gray-800"
-            :style="{ 'line-height': resource[key] }"
+            :style="{ 'line-height': value }"
           >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore eos, exercitationem iste excepturi id adipisci. Iure culpa laudantium ut sapiente minima beatae temporibus dolor quidem, dolorem, minus incidunt enim aliquid.</p>
         </div>
       </template>

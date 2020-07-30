@@ -1,12 +1,12 @@
 <template>
   <BaseSection title='Letter Spacing' id="letterSpacing">
     <template v-slot:scopeList>
-      <template v-for="key in Object.keys(resource)">
+      <template v-for="(value, key) in resource">
         <div class="mb-6" :key="key">
           <p class="text-sm text-gray-500">.tracking-{{ key }}</p>
           <p
             class="truncate text-gray-800"
-            :style="{ 'letter-spacing': resource[key] }"
+            :style="{ 'letter-spacing': value }"
           >The quick brown fox jumped over the lazy dog.</p>
         </div>
       </template>

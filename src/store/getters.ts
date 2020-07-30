@@ -39,8 +39,7 @@ const getters = {
 
     const JSONData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(JSONStructure))
     return JSONData
-  },
-  config: (state: StateType) => state.tailwindConfig
+  }
 }
 
 export default getters
