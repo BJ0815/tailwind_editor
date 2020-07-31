@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -7,14 +7,13 @@ import BaseInput from './components/Typography/UiInput/BaseInput.vue'
 import BaseInputGroup from './components/Typography/UiInput/BaseInputGroup.vue'
 import './main.css'
 
-Vue.config.productionTip = false
+const app = createApp(App)
 
-Vue.component('BaseButton', BaseButton)
-Vue.component('BaseInput', BaseInput)
-Vue.component('BaseInputGroup', BaseInputGroup)
+app.component('BaseButton', BaseButton)
+app.component('BaseInput', BaseInput)
+app.component('BaseInputGroup', BaseInputGroup)
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+app
+  .use(router)
+  .use(store)
+  .mount('#app')
