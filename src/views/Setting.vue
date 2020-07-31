@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Preview from '@/components/Preview.vue'
+import Preview from '@/components/preview.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { navigators } from '../data'
 

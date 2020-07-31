@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BaseButton from './components/Typography/UiButton/BaseButton.vue'
-import BaseSidebar from './components/Typography/UiSidebar/BaseSidebar.vue'
 import BaseInput from './components/Typography/UiInput/BaseInput.vue'
 import BaseInputGroup from './components/Typography/UiInput/BaseInputGroup.vue'
 import './main.css'
@@ -11,7 +10,6 @@ import './main.css'
 Vue.config.productionTip = false
 
 Vue.component('BaseButton', BaseButton)
-Vue.component('BaseSidebar', BaseSidebar)
 Vue.component('BaseInput', BaseInput)
 Vue.component('BaseInputGroup', BaseInputGroup)
 
