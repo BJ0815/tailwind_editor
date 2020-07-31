@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import InputSection from '@/components/inputSection.vue'
 import DownloadButton from '@/components/downloadButton.vue'
 import DropdownMenu from '@/components/dropdownMenu.vue'
@@ -25,8 +25,7 @@ import { mapGetters } from 'vuex'
 import { navigators } from '../data'
 import { GETTERS_ACTIONS, MUTATIONS_ACTIONS } from '@/types'
 
-export default Vue.extend({
-  name: 'BaseSidebar',
+export default defineComponent({
   components: {
     InputSection,
     DownloadButton,

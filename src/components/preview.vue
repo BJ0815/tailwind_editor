@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import SpacingSection from '@/components/Typography/UiPreviewSection/spacing.vue'
 import WidthSection from '@/components/Typography/UiPreviewSection/width.vue'
 import FontSizeSection from '@/components/Typography/UiPreviewSection/fontSize.vue'
@@ -20,7 +20,7 @@ import LineHeightSection from '@/components/Typography/UiPreviewSection/lineHeig
 import { mapState, mapGetters } from 'vuex'
 import { GETTERS_ACTIONS } from '@/types'
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     SpacingSection,
     WidthSection,

@@ -45,12 +45,12 @@
           <BaseButton
               text="確認"
               class="mr-4 btn-blue"
-              @click="update"
+              @on-click="update"
             />
           <BaseButton
               text="取消"
               class="bg-gray-400 hover:bg-gray-600"
-              @click="close"
+              @on-click="close"
             />
         </div>
       </div>
@@ -60,10 +60,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { validFormats } from '@/utils/shared'
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     resource: {
       type: Object,
@@ -95,7 +95,7 @@ export default Vue.extend({
       const popupSrc = this.popupSrc as Record<string, string>
       return popupSrc.value + type || ''
     },
-    label () {
+    label (): string {
       if (!this.resource) return ''
 
       const { group = '' } = this.resource
@@ -130,7 +130,7 @@ export default Vue.extend({
       this.menuSelected = value
     },
     close (): void {
-      this.$emit('onClose')
+      this.$emit('on-close')
     },
     focus (): void {
       const keyInputElm = this.$refs.keyInput as HTMLInputElement

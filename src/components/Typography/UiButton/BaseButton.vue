@@ -1,20 +1,19 @@
-<template functional>
+<template>
   <a
-    v-on="listeners"
-    v-bind="data.attrs"
-    :href="props.href"
+    v-bind="$attrs"
+    :href="href"
     class="block cursor-pointer btn"
-    :class="[data.class, data.staticClass]"
+    @click="$emit('on-click')"
   >
-    <span :class="[`text-${props.size}`, props.txtColor]">
-      {{ props.text }}
+    <span :class="[`text-${size}`, txtColor]">
+      {{ text }}
     </span>
   </a>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { defineComponent } from 'vue'
+export default defineComponent({
   props: {
     txtColor: {
       type: String,

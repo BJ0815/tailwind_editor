@@ -7,17 +7,17 @@
       v-if="isPopOpen"
       :resource="popupSrc"
       @update="onPopupUpdate"
-      @onClose="onPopupClose"
+      @on-close="onPopupClose"
     />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import PopupMenu from '@/components/popupModel.vue'
 import { mapState } from 'vuex'
 import { MUTATIONS_ACTIONS } from '@/types'
-export default Vue.extend({
+export default defineComponent({
   components: {
     PopupMenu
   },

@@ -16,12 +16,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import Preview from '@/components/preview.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { navigators } from '../data'
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     Preview,
     Sidebar

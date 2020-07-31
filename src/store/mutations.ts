@@ -1,6 +1,6 @@
 import { StateType, MUTATIONS_ACTIONS, SettingParametersType } from '../types'
 import { isNull, isEmpty, regexHyphen, checkHyphen } from '../utils/shared'
-import Vue from 'vue'
+
 const setValueByNested = (src: Record<string, string>, keys: string[], value: string): void => {
   if (isEmpty(keys)) return
 
@@ -9,8 +9,8 @@ const setValueByNested = (src: Record<string, string>, keys: string[], value: st
     return setValueByNested(src[key] as unknown as Record<string, string>, keys, value)
   }
 
-  // src[key] = value
-  Vue.set(src, key, value)
+  src[key] = value
+  // Vue.set(src, key, value)
 }
 
 export default {

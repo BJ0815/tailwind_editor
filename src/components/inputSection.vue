@@ -7,7 +7,7 @@
         v-for="(itemGroup, key) in section"
         :key="key"
         :title="key"
-        @onClick="togglePopup(key)"
+        @on-click="togglePopup(key)"
       >
         <BaseInput
           v-for="item in itemGroup"
@@ -18,8 +18,7 @@
           :type="item.type"
           :placeholder="item.label"
           readonly
-          @click="togglePopup(key, item)"
-          @change="onChange([key, item.id, $event.target.value])"
+          @on-click="togglePopup(key, item)"
         />
       </BaseInputGroup>
     </template>
@@ -27,10 +26,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { MUTATIONS_ACTIONS, SettingParametersType } from '@/types'
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     resource: {
       type: Array,

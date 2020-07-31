@@ -4,7 +4,7 @@
       <h5 class="text-2xl leading-8 mr-4">{{ title }}</h5>
       <div
         class="text-orange"
-        @click="$emit('onClick')"
+        @click="$emit('on-click')"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { defineComponent } from 'vue'
+export default defineComponent({
   props: {
     title: {
       type: String,

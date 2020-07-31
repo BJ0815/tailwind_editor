@@ -3,7 +3,7 @@
     <template v-slot:scopeList>
       <template v-for="(value, key) in resource">
         <div class="flex items-center mb-1" :key="key">
-          <p class="text-sm text-gray-600 w-12 mr-2">.*-{{ key }}</p>
+          <p class="text-md text-gray-600 w-12 mr-2">.* -{{ key }}</p>
           <div
             class="h-4 bg-gray-400 w-0"
             :style="{ width: value }"
@@ -15,10 +15,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import BaseSection from '@/components/Typography/UiPreviewSection/BaseSection.vue'
 
-export default Vue.extend({
+export default defineComponent({
   components: {
     BaseSection
   },

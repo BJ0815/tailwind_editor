@@ -1,7 +1,7 @@
-<template functional>
-  <section class="overflow-hidden mb-8" v-bind="data.attrs">
+<template>
+  <section class="overflow-hidden mb-8" v-bind="$attrs">
     <header>
-      <h2 class="text-2xl">{{ props.title }}</h2>
+      <h2 class="text-2xl">{{ title }}</h2>
     </header>
     <div
       class="bg-white rounded-lg overflow-hidden border-t border-l border-r border-b border-gray-400 p-4"
@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { defineComponent } from 'vue'
+export default defineComponent({
   props: {
     title: {
       type: String,

@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 import { GETTERS_ACTIONS } from '@/types'
 
-export default Vue.extend({
+export default defineComponent({
   computed: {
     ...mapGetters([GETTERS_ACTIONS.EXPORT_JSON]),
     url () {
