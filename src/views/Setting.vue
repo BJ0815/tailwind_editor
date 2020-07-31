@@ -16,21 +16,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Preview from '@/components/Preview.vue'
+import { Vue, Component } from 'vue-property-decorator'
+import Preview from '@/components/preview.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { navigators } from '../data'
 
-export default Vue.extend({
+@Component({
+  // All component options are allowed in here
   components: {
     Preview,
     Sidebar
-  },
-  data () {
-    return {
-      title: 'Setting Page',
-      navigators
-    }
   }
 })
+export default class Setting extends Vue {
+  // Initial data can be declared as instance properties
+  title = 'Setting Page'
+  navigators = navigators
+}
 </script>

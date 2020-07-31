@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
 import SpacingSection from '@/components/Typography/UiPreviewSection/spacing.vue'
 import WidthSection from '@/components/Typography/UiPreviewSection/width.vue'
 import FontSizeSection from '@/components/Typography/UiPreviewSection/fontSize.vue'
@@ -20,7 +20,7 @@ import LineHeightSection from '@/components/Typography/UiPreviewSection/lineHeig
 import { mapState, mapGetters } from 'vuex'
 import { GETTERS_ACTIONS } from '@/types'
 
-export default Vue.extend({
+@Component({
   components: {
     SpacingSection,
     WidthSection,
@@ -34,6 +34,8 @@ export default Vue.extend({
     ...mapGetters([GETTERS_ACTIONS.USE_WIDTH_PREVIEW])
   }
 })
+export default class Preview extends Vue {
+}
 </script>
 
 <style>

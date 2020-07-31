@@ -14,15 +14,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
 
-export default Vue.extend({
-  data () {
-    return {
-      path: 'setting'
-    }
-  }
-})
+@Component
+export default class Index extends Vue {
+  path = 'setting';
+}
 </script>
 
 <style lang="scss" scoped>

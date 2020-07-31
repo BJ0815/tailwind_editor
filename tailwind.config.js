@@ -1,5 +1,9 @@
 module.exports = {
-  purge: [],
+  purge: [
+    'src/**/*.vue',
+    'src/**/*.html',
+    'src/**/*.js'
+  ],
   theme: {
     extend: {
       inset: {

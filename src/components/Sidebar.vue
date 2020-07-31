@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
 import InputSection from '@/components/inputSection.vue'
 import DownloadButton from '@/components/downloadButton.vue'
 import DropdownMenu from '@/components/dropdownMenu.vue'
@@ -25,25 +25,21 @@ import { mapGetters } from 'vuex'
 import { navigators } from '../data'
 import { GETTERS_ACTIONS, MUTATIONS_ACTIONS } from '@/types'
 
-export default Vue.extend({
-  name: 'BaseSidebar',
+@Component({
   components: {
     InputSection,
     DownloadButton,
     DropdownMenu
   },
-  data () {
-    return {
-      navigators
-    }
-  },
   computed: {
     ...mapGetters([GETTERS_ACTIONS.GET_TAB_RESOURCE])
-  },
-  methods: {
-    setSidebar (val: string) {
-      this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_TAB_SELECTOR, val)
-    }
   }
 })
+export default class Sidebar extends Vue {
+  navigators = navigators
+
+  setSidebar (val: string) {
+    this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_TAB_SELECTOR, val)
+  }
+}
 </script>
