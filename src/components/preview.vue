@@ -9,17 +9,18 @@
   </div>
 </template>
 
-<script>
-import SpacingSection from '@/components/Typography/UiPreviewSection/spacing'
-import WidthSection from '@/components/Typography/UiPreviewSection/width'
-import FontSizeSection from '@/components/Typography/UiPreviewSection/fontSize'
-import FontWeightSection from '@/components/Typography/UiPreviewSection/fontWeight'
-import LetterSpacingSection from '@/components/Typography/UiPreviewSection/letterSpacing'
-import LineHeightSection from '@/components/Typography/UiPreviewSection/lineHeight'
+<script lang="ts">
+import Vue from 'vue'
+import SpacingSection from '@/components/Typography/UiPreviewSection/spacing.vue'
+import WidthSection from '@/components/Typography/UiPreviewSection/width.vue'
+import FontSizeSection from '@/components/Typography/UiPreviewSection/fontSize.vue'
+import FontWeightSection from '@/components/Typography/UiPreviewSection/fontWeight.vue'
+import LetterSpacingSection from '@/components/Typography/UiPreviewSection/letterSpacing.vue'
+import LineHeightSection from '@/components/Typography/UiPreviewSection/lineHeight.vue'
 import { mapState, mapGetters } from 'vuex'
 import { GETTERS_ACTIONS } from '@/types'
 
-export default {
+export default Vue.extend({
   components: {
     SpacingSection,
     WidthSection,
@@ -32,7 +33,7 @@ export default {
     ...mapState(['tailwindConfig']),
     ...mapGetters([GETTERS_ACTIONS.USE_WIDTH_PREVIEW])
   }
-}
+})
 </script>
 
 <style>

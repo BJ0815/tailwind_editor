@@ -10,9 +10,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   props: {
     label: {
       type: String,
@@ -23,5 +24,5 @@ export default {
       required: true
     }
   }
-}
+})
 </script>

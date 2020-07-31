@@ -6,17 +6,23 @@
           <h1 class="text-3xl my-8 mx-auto typing-demo text-white">Customize your own TailwindCss configuration</h1>
         </header>
         <nav class="text-center">
-          <router-link :to="{path: 'setting'}" class="btn shadow-md hover:bg-purple-600 text-white border-solid border">Get Started</router-link>
+          <router-link :to="{ path }" class="btn shadow-md hover:bg-purple-600 text-white border-solid border">Get Started</router-link>
         </nav>
       </article>
     </div>
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 
-export default {
-}
+export default Vue.extend({
+  data () {
+    return {
+      path: 'setting'
+    }
+  }
+})
 </script>
 
 <style lang="scss" scoped>

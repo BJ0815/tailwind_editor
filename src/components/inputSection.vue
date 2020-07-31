@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MUTATIONS_ACTIONS } from '@/types'
+import { MUTATIONS_ACTIONS, SettingParametersType } from '@/types'
 
 export default Vue.extend({
   props: {
@@ -49,7 +49,7 @@ export default Vue.extend({
 
       this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_POPUP, [key, field])
     },
-    onChange (changeEvent: string[]) {
+    onChange (changeEvent: SettingParametersType) {
       this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, changeEvent)
     }
   }

@@ -1,4 +1,4 @@
-import { StateType, MUTATIONS_ACTIONS } from '../types'
+import { StateType, MUTATIONS_ACTIONS, SettingParametersType } from '../types'
 import { isNull, isEmpty, regexHyphen, checkHyphen } from '../utils/shared'
 import Vue from 'vue'
 const setValueByNested = (src: Record<string, string>, keys: string[], value: string): void => {
@@ -13,21 +13,11 @@ const setValueByNested = (src: Record<string, string>, keys: string[], value: st
   Vue.set(src, key, value)
 }
 
-interface DefaultRecord {
-  key: string;
-  value: string;
-}
-interface SettingParameters {
-  group: string;
-  oldItem: DefaultRecord;
-  newItem: DefaultRecord;
-}
-
 export default {
   [MUTATIONS_ACTIONS.TOGGLE_TAB_SELECTOR] (state: StateType, input: string) {
     state.tabSelector = input.toLowerCase()
   },
-  [MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG] (state: StateType, payload: SettingParameters) {
+  [MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG] (state: StateType, payload: SettingParametersType) {
     const { group, oldItem, newItem } = payload
     const _tailwindConfig = state.tailwindConfig
     const subKeys = checkHyphen(newItem.key, regexHyphen)

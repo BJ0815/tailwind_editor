@@ -14,9 +14,11 @@
   </BaseSection>
 </template>
 
-<script>
-import BaseSection from '@/components/Typography/UiPreviewSection/BaseSection'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import BaseSection from '@/components/Typography/UiPreviewSection/BaseSection.vue'
+
+export default Vue.extend({
   components: {
     BaseSection
   },
@@ -26,7 +28,7 @@ export default {
       required: true
     }
   }
-}
+})
 </script>
 
 <style></style>

@@ -59,10 +59,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { validFormats } from '@/utils/shared'
 
-export default {
+export default Vue.extend({
   props: {
     resource: {
       type: Object,
@@ -71,14 +72,14 @@ export default {
   },
   data () {
     return {
-      menuSelected: 'none',
-      formatTypes: ['vw', 'vh', 'px', 'em', 'rem', '%']
+      menuSelected: 'none' as string,
+      formatTypes: ['vw', 'vh', 'px', 'em', 'rem', '%'] as string[]
     }
   },
   computed: {
-    popupSrc () {
+    popupSrc (): Record<string, string> {
       const src = Object.assign({}, this.resource)
-      const exp = validFormats(src.value, this.formatTypes)
+      const exp = validFormats(src.value, this.formatTypes as string[])
       if (!exp) {
         this.setMenuSelected('none')
         return src
@@ -90,8 +91,9 @@ export default {
       return src
     },
     newValue () {
-      const type = this.menuSelected !== 'none' ? this.menuSelected : ''
-      return this.popupSrc.value + type || ''
+      const type = this.getType() as string
+      const popupSrc = this.popupSrc as Record<string, string>
+      return popupSrc.value + type || ''
     },
     label () {
       if (!this.resource) return ''
@@ -104,6 +106,9 @@ export default {
     this.focus()
   },
   methods: {
+    getType (): string {
+      return this.menuSelected !== 'none' ? this.menuSelected : ''
+    },
     update () {
       const group = this.popupSrc.group
       const subKey = this.popupSrc.id
@@ -121,17 +126,19 @@ export default {
       }
       this.$emit('update', changeEvent)
     },
-    setMenuSelected (value) {
+    setMenuSelected (value: string): void {
       this.menuSelected = value
     },
-    close () {
+    close (): void {
       this.$emit('onClose')
     },
-    focus () {
-      if (!this.resource.label) return this.$refs.keyInput.focus()
+    focus (): void {
+      const keyInputElm = this.$refs.keyInput as HTMLInputElement
+      const valueInputElm = this.$refs.valueInput as HTMLInputElement
+      if (!this.resource.label) return keyInputElm.focus()
 
-      this.$refs.valueInput.focus()
+      valueInputElm.focus()
     }
   }
-}
+})
 </script>

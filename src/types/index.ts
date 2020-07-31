@@ -30,3 +30,14 @@ export interface ExportJsonType {
     [x: string]: Record<string, string>;
   };
 }
+
+interface DefaultRecordType {
+  key: string;
+  value: string;
+}
+
+export interface SettingParametersType {
+  group: string;
+  oldItem: DefaultRecordType;
+  newItem: DefaultRecordType;
+}

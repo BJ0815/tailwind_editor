@@ -16,8 +16,8 @@ const getters = {
   ) => {
     const config = state.tailwindConfig
     const selector = state.tabSelector
-    const policy = tabMapping.get(selector) || []
-    if (!policy.length) return []
+    const policy = tabMapping.get(selector)
+    if (!policy) return []
     return policy.map(key => ({
       [key]:
       formatTabResource({ src: config[key], key })
