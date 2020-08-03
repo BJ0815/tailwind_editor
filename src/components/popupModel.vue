@@ -23,9 +23,9 @@
               class="flex-1 bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-l-lg py-2 px-4 block appearance-none h-10 leading-normal"
               v-model="popupSrc.value"
               :id="popupSrc.label"
-              :type="popupSrc.type"
+              :type="inputType"
             >
-            <div class="inline-block relative w-32">
+            <div v-if="!isColorSetting" class="inline-block relative w-32">
               <select v-model="menuSelected" class="block appearance-none bg-blue-600 text-gray-200 w-full hover:border-gray-500 px-4 py-2 pr-8 rounded-r leading-normal focus:outline-none focus:shadow-outline">
                 <option
                   v-for="type in formatTypes"
@@ -100,6 +100,15 @@ export default Vue.extend({
 
       const { group = '' } = this.resource
       return group
+    },
+    isColorSetting (): boolean {
+      const popupSrc = this.popupSrc as Record<string, string>
+      return popupSrc && popupSrc.group === 'colors'
+    },
+    inputType () {
+      const isColorSetting = this.isColorSetting as boolean
+      const popupSrc = this.popupSrc as Record<string, string>
+      return isColorSetting ? 'color' : popupSrc.type || 'text'
     }
   },
   mounted () {
@@ -107,7 +116,7 @@ export default Vue.extend({
   },
   methods: {
     getType (): string {
-      return this.menuSelected !== 'none' ? this.menuSelected : ''
+      return this.menuSelected !== 'none' ? this.menuSelected || '' : ''
     },
     update () {
       const group = this.popupSrc.group
@@ -130,7 +139,7 @@ export default Vue.extend({
       this.menuSelected = value
     },
     close (): void {
-      this.$emit('onClose')
+      this.$emit('on-close')
     },
     focus (): void {
       const keyInputElm = this.$refs.keyInput as HTMLInputElement

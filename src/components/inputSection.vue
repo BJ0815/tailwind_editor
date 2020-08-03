@@ -7,7 +7,7 @@
         v-for="(itemGroup, key) in section"
         :key="key"
         :title="key"
-        @onClick="togglePopup(key)"
+        @on-click="togglePopup(key)"
       >
         <BaseInput
           v-for="item in itemGroup"

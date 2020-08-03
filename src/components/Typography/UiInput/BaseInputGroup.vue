@@ -4,7 +4,7 @@
       <h5 class="text-2xl leading-8 mr-4">{{ title }}</h5>
       <div
         class="text-orange"
-        @click="$emit('onClick')"
+        @click="$emit('on-click')"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

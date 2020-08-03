@@ -1,13 +1,17 @@
 <template>
   <div
     class="bg-main relative"
+    id="app"
   >
-    <router-view />
+
+    <transition name="fade">
+      <router-view />
+    </transition>
     <PopupMenu
       v-if="isPopOpen"
       :resource="popupSrc"
       @update="onPopupUpdate"
-      @onClose="onPopupClose"
+      @on-close="onPopupClose"
     />
   </div>
 </template>
@@ -38,10 +42,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.bg-main {
-  background-color: #a4508b;
-  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
-}
-</style>
