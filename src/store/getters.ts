@@ -1,27 +1,15 @@
-import { StateType, GETTERS_ACTIONS, GROUP, ExportJsonType } from '@/types'
-import { formatTabResource, twoSumArr } from '@/utils/shared'
-
-const tabMapping = new Map([
-  [GROUP.GENERAL.toLowerCase(), ['screens', 'opacity']],
-  [GROUP.COLORS.toLowerCase(), ['colors']],
-  [GROUP.TYPOGRAPHY.toLowerCase(), ['fontSize', 'fontWeight', 'letterSpacing', 'lineHeight']],
-  // [GROUP.HEIGHT.toLowerCase(), ['height']],
-  [GROUP.WIDTH.toLowerCase(), ['width']],
-  [GROUP.SPACING.toLowerCase(), ['spacing']]
-])
+import { StateType, GETTERS_ACTIONS } from '@/types'
+import { twoSumArr } from '@/utils/shared'
+import ConfigService from '@/data/configService'
 
 const getters = {
   [GETTERS_ACTIONS.GET_TAB_RESOURCE]: (
     state: StateType
   ) => {
-    const config = state.tailwindConfig
+    const _tailwindConfig = state.tailwindConfig
     const selector = state.tabSelector
-    const policy = tabMapping.get(selector)
-    if (!policy) return []
-    return policy.map(key => ({
-      [key]:
-      formatTabResource({ src: config[key], key })
-    }))
+
+    return ConfigService.getTabResource(selector, _tailwindConfig)
   },
   [GETTERS_ACTIONS.USE_WIDTH_PREVIEW]: () => {
     const x = [2, 3, 4, 5, 6, 12]
@@ -31,14 +19,8 @@ const getters = {
     }, [] as string[][])
   },
   [GETTERS_ACTIONS.EXPORT_JSON]: (state: StateType) => {
-    const config = state.tailwindConfig
-    const JSONStructure: ExportJsonType = {
-      theme: {}
-    }
-    JSONStructure.theme = config
-
-    const JSONData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(JSONStructure))
-    return JSONData
+    const _tailwindConfig = state.tailwindConfig
+    return ConfigService.exportJson(_tailwindConfig)
   }
 }
 

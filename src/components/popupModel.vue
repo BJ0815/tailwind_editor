@@ -60,13 +60,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
 import { validFormats } from '@/utils/shared'
+import { FormatType, SettingParametersType } from '@/types'
 
 export default Vue.extend({
   props: {
     resource: {
-      type: Object,
+      type: Object as PropType<FormatType>,
       required: true
     }
   },
@@ -77,7 +78,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    popupSrc (): Record<string, string> {
+    popupSrc (): FormatType {
       const src = Object.assign({}, this.resource)
       const exp = validFormats(src.value, this.formatTypes as string[])
       if (!exp) {
@@ -92,22 +93,22 @@ export default Vue.extend({
     },
     newValue () {
       const type = this.getType() as string
-      const popupSrc = this.popupSrc as Record<string, string>
+      const popupSrc = this.popupSrc as FormatType
       return popupSrc.value + type || ''
     },
-    label () {
+    label (): string {
       if (!this.resource) return ''
 
       const { group = '' } = this.resource
       return group
     },
     isColorSetting (): boolean {
-      const popupSrc = this.popupSrc as Record<string, string>
+      const popupSrc = this.popupSrc as FormatType
       return popupSrc && popupSrc.group === 'colors'
     },
     inputType () {
       const isColorSetting = this.isColorSetting as boolean
-      const popupSrc = this.popupSrc as Record<string, string>
+      const popupSrc = this.popupSrc as FormatType
       return isColorSetting ? 'color' : popupSrc.type || 'text'
     }
   },
@@ -119,10 +120,10 @@ export default Vue.extend({
       return this.menuSelected !== 'none' ? this.menuSelected || '' : ''
     },
     update () {
-      const group = this.popupSrc.group
+      const group = this.popupSrc.group || ''
       const subKey = this.popupSrc.id
       const newValue = this.newValue
-      const changeEvent = {
+      const changeEvent: SettingParametersType = {
         group,
         oldItem: {
           key: this.resource.id,

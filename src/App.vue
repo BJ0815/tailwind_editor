@@ -20,7 +20,7 @@
 import Vue from 'vue'
 import PopupMenu from '@/components/popupModel.vue'
 import { mapState } from 'vuex'
-import { MUTATIONS_ACTIONS } from '@/types'
+import { MUTATIONS_ACTIONS, SettingParametersType } from '@/types'
 export default Vue.extend({
   components: {
     PopupMenu
@@ -32,7 +32,7 @@ export default Vue.extend({
     })
   },
   methods: {
-    onPopupUpdate (output: string[]) {
+    onPopupUpdate (output: SettingParametersType) {
       this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, output)
       this.$store.commit(MUTATIONS_ACTIONS.CLOSE_POPUP)
     },

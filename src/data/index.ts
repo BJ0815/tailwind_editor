@@ -1,5 +1,5 @@
 import defaultConfig from './default'
-import { GROUP } from '../types'
+import { GROUP, ResourceType } from '../types'
 
 interface Navigation<T> {
   text: T;
@@ -15,4 +15,4 @@ const genNavigation: NavigationFn<string> = value => ({
 
 export const navigators: Navigation<string>[] = Object.keys(GROUP).map(key => genNavigation(key))
 
-export const tailwindConfig = defaultConfig as unknown as Record<string, Record<string, string>>
+export const tailwindConfig = defaultConfig as unknown as ResourceType

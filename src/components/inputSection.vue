@@ -19,7 +19,7 @@
           :placeholder="item.label"
           readonly
           @click="togglePopup(key, item)"
-          @change="onChange([key, item.id, $event.target.value])"
+          @change="onChange([key, item, $event.target.value])"
         />
       </BaseInputGroup>
     </template>
@@ -27,29 +27,35 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { MUTATIONS_ACTIONS, SettingParametersType } from '@/types'
+import Vue, { PropType } from 'vue'
+import { MUTATIONS_ACTIONS, SettingParametersType, FormatType } from '@/types'
 
 export default Vue.extend({
   props: {
     resource: {
-      type: Array,
+      type: Array as PropType<FormatType[]>,
       default: () => []
     }
   },
-  data () {
-    return {
-      isOpen: false,
-      field: {}
-    }
-  },
   methods: {
-    togglePopup (key: string, field?: Record<string, string>) {
+    togglePopup (key: string, field?: FormatType) {
       if (field && field.type === 'color') return
 
       this.$store.commit(MUTATIONS_ACTIONS.TOGGLE_POPUP, [key, field])
     },
-    onChange (changeEvent: SettingParametersType) {
+    onChange ([group, item, newValue]: [string, FormatType, string]) {
+      const subKey = item.id
+      const changeEvent: SettingParametersType = {
+        group,
+        oldItem: {
+          key: item.id,
+          value: ''
+        },
+        newItem: {
+          key: subKey,
+          value: newValue
+        }
+      }
       this.$store.commit(MUTATIONS_ACTIONS.SET_TAILWIND_CONFIG, changeEvent)
     }
   }

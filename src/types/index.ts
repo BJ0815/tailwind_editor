@@ -9,10 +9,11 @@ export interface FormatType {
   id: string;
   value: string;
   type: string;
+  group?: string;
 }
 
 export interface StateType {
-  tailwindConfig: Record<string, Record<string, string>>;
+  tailwindConfig: ResourceType;
   tabSelector: string;
   isPopOpen: boolean;
   popupSrc: Record<string, string>;
@@ -26,9 +27,7 @@ export interface FormatParametersType {
 }
 
 export interface ExportJsonType {
-  theme: {
-    [x: string]: Record<string, string>;
-  };
+  theme: ResourceType;
 }
 
 interface DefaultRecordType {
@@ -40,4 +39,12 @@ export interface SettingParametersType {
   group: string;
   oldItem: DefaultRecordType;
   newItem: DefaultRecordType;
+}
+
+export interface TabResourceType {
+  [x: string]: FormatType[];
+}
+
+export interface CallBackForNestedObjectIterator {
+  (src: Record<string, string>, key: string, value: string): void;
 }
