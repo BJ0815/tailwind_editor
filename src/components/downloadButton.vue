@@ -1,6 +1,7 @@
 <template>
   <div class="fixed mb-4 bottom-0 inset-x-0 leading-16 lg:relative z-50">
     <BaseButton
+      tag="a"
       text="Download"
       class="bg-green-400 hover:bg-green-600 rounded-none w-11/12 mx-auto lg:w-auto lg:ml-auto text-center"
       :href="url"

@@ -43,11 +43,13 @@
         <hr class="my-4" />
         <div class="flex items-center justify-end">
           <BaseButton
+              type="button"
               text="確認"
               class="mr-4 btn-blue"
               @click="update"
             />
           <BaseButton
+              type="button"
               text="取消"
               class="bg-gray-400 hover:bg-gray-600"
               @click="close"
@@ -114,8 +116,14 @@ export default Vue.extend({
   },
   mounted () {
     this.focus()
+    window.addEventListener('keyup', this.keyEventHandler)
   },
   methods: {
+    keyEventHandler (event: KeyboardEvent) {
+      if (event.keyCode === 27) {
+        this.close()
+      }
+    },
     getType (): string {
       return this.menuSelected !== 'none' ? this.menuSelected || '' : ''
     },
@@ -149,6 +157,9 @@ export default Vue.extend({
 
       valueInputElm.focus()
     }
+  },
+  beforeDestroy () {
+    window.removeEventListener('keyup', this.keyEventHandler)
   }
 })
 </script>

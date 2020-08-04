@@ -1,11 +1,13 @@
 <template>
-  <div id="preview" class="p-8 w-4/5 mx-auto">
-    <SpacingSection :resource="tailwindConfig.spacing" />
-    <WidthSection :resource="tailwindConfig.width" :useWidthPreview="useWidthPreview" />
-    <FontSizeSection :resource="tailwindConfig.fontSize"/>
-    <FontWeightSection :resource="tailwindConfig.fontWeight"/>
-    <LetterSpacingSection :resource="tailwindConfig.letterSpacing"/>
-    <LineHeightSection :resource="tailwindConfig.lineHeight"/>
+  <div id="preview" class="p-8 h-screen lg:-mr-4 lg:overflow-x-hidden lg:overflow-y-auto lg:scrolling-touch">
+    <div class="w-3/4 mx-auto">
+      <SpacingSection :resource="tailwindConfig.spacing" />
+      <WidthSection :resource="tailwindConfig.width" :useWidthPreview="useWidthPreview" />
+      <FontSizeSection :resource="tailwindConfig.fontSize"/>
+      <FontWeightSection :resource="tailwindConfig.fontWeight"/>
+      <LetterSpacingSection :resource="tailwindConfig.letterSpacing"/>
+      <LineHeightSection :resource="tailwindConfig.lineHeight"/>
+    </div>
   </div>
 </template>
 

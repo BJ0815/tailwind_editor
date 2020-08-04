@@ -3,8 +3,10 @@
     <header class="flex items-center h-8">
       <h5 class="text-2xl leading-8 mr-4">{{ title }}</h5>
       <div
-        class="text-orange"
+        class="text-orange focus:outline-none focus:shadow-outline"
         @click="$emit('on-click')"
+        @keyup.enter="$emit('on-click')"
+        tabindex="0"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

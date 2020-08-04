@@ -7,12 +7,14 @@
     <transition name="fade">
       <router-view />
     </transition>
-    <PopupMenu
-      v-if="isPopOpen"
-      :resource="popupSrc"
-      @update="onPopupUpdate"
-      @on-close="onPopupClose"
-    />
+    <transition name="popup-fade">
+      <PopupMenu
+        v-if="isPopOpen"
+        :resource="popupSrc"
+        @update="onPopupUpdate"
+        @on-close="onPopupClose"
+      />
+    </transition>
   </div>
 </template>
 

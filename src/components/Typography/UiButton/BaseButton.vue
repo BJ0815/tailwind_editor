@@ -1,15 +1,16 @@
 <template functional>
-  <a
+  <component
+    :is="props.tag"
     v-on="listeners"
     v-bind="data.attrs"
     :href="props.href"
-    class="block cursor-pointer btn"
+    class="block cursor-pointer btn focus:outline-none focus:shadow-outline"
     :class="[data.class, data.staticClass]"
   >
     <span :class="[`text-${props.size}`, props.txtColor]">
       {{ props.text }}
     </span>
-  </a>
+  </component>
 </template>
 
 <script lang="ts">
@@ -31,9 +32,11 @@ export default Vue.extend({
     text: {
       type: String,
       required: true
+    },
+    tag: {
+      type: String,
+      default: () => 'button'
     }
   }
 })
 </script>
-
-<style></style>
